@@ -1,0 +1,36 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+  xmlns:map="ref.google">
+  <l:Grid
+    defaultSpan="L12 M12 S12"
+    width="auto">
+    <l:content>
+      <f:SimpleForm id="SimpleFormDisplay480"
+        minWidth="1024"
+        maxContainerCols="2"
+        editable="false"
+        layout="ResponsiveGridLayout"
+        labelSpanL="4"
+        labelSpanM="4"
+        emptySpanL="0"
+        emptySpanM="0"
+        columnsL="2"
+        columnsM="2">
+        <f:content>
+          <core:Title text="Details" />
+          <Label text="Birthday" />
+          <Text text="{path:'birthday',formatter:'ref.ui5.friends.utils.Formatter.validateBirthday'}" />
+          <Label text="Device" />
+          <Text text="{parts:['devices/0/os','devices/0/hardware'],formatter:'ref.ui5.friends.utils.Formatter.validateDevice'}" />
+          <Label text="Bio" />
+          <Text text="{path:'bio',formatter:'ref.ui5.friends.utils.Formatter.validateBio'}" />
+          <core:Title text="{path:'location/name',formatter:'ref.ui5.friends.utils.Formatter.setLocationTitle'}" />
+          <map:maps address="{location/name}"></map:maps>
+        </f:content>
+      </f:SimpleForm>
+    </l:content>
+  </l:Grid>
+</core:FragmentDefinition>

@@ -1,0 +1,45 @@
+<core:View xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" controllerName="ref.ui5.friends.view.Detail" 
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:map="ref.google">
+	<Page title="Details">
+		<content>
+          <FeedInput
+    		post="onPost"
+    		showIcon="true"
+    		icon="{picture/data/url}" 
+    	/>
+        <IconTabBar
+    class="iconTabBarPaddingTop"
+    id="idIconTabBar"
+    select="handleSelect"
+    expanded="{device>/isNoPhone}">
+    <items>
+      <IconTabFilter
+        icon="sap-icon://hint"
+        key="details"
+        >
+        <core:Fragment fragmentName="ref.ui5.friends.view.Form" type="XML" />
+      </IconTabFilter>
+      <IconTabFilter
+        icon="sap-icon://collaborate"
+        key="mutual">
+         <List id="mutualList"
+            headerText="Mutual Friends"
+            noDataText="No mutual friends">
+        <ObjectListItem
+          title="{mutual>name}"
+          icon = "{path:'mutual>id',formatter:'ref.ui5.friends.utils.Formatter.getPicture'}"
+        />
+     </List>
+      </IconTabFilter>
+    </items>
+  </IconTabBar>
+		</content>
+    <footer>
+            <Bar>
+            </Bar>
+          </footer>
+	</Page>
+</core:View>
